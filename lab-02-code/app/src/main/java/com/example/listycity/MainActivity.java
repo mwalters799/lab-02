@@ -2,8 +2,10 @@ package com.example.listycity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<City> cityAdapter;
     ArrayList<City> dataList;
     Button addButton;
+
+    EditText cityInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +55,29 @@ public class MainActivity extends AppCompatActivity {
         //if add button is pressed, add text in the input thingy
 
         addButton = (Button) findViewById(R.id.addButtonView);
+        cityInput = (EditText) findViewById(R.id.userInput);
+
+        ButtonToggler addButtonToggler = new ButtonToggler();
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addButton.setText("pressed");
 
-                //fetch text from user input
-
-                //create new city
-
-                //add to cityList
+                //if button is off:
+                if (!addButtonToggler.isActivated()){
+                    addButton.setText(getString(R.string.confirmMessage));
+                }
+                //if button is on: create new city, add to cityList
+                else {
+                    String name = cityInput.getText().toString();//works
+                    City newCity = new City(name); //works
+                    cityAdapter.add(newCity);
+                    addButton.setText(getString(R.string.addButton)); //sets back to default
+                    cityInput.setText("");
+                }
+                addButtonToggler.switchState();
             }
         });
+
 
     }
 }
