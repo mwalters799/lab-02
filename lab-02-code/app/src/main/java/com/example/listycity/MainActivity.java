@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     //declare variables here so I'll be able to reference them later
     ListView cityList;
-    ArrayAdapter<String> cityAdapter;
-    ArrayList<String> dataList;
+    ArrayAdapter<City> cityAdapter;
+    ArrayList<City> dataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
         cityList = findViewById(R.id.city_list);
 
-        String[]cities = {"Edmonton", "Tokyo", "London", "Sydney", "Moscow"};
+        //String[]cities = {"Edmonton", "Tokyo", "London", "Sydney", "Moscow"};
 
+        City edmonton = new City("Edmonton");
+        City tokyo = new City("Tokyo");
+
+        City[]cities = {edmonton, tokyo};
         dataList = new ArrayList<>();
         dataList.addAll(Arrays.asList(cities));
 
