@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<City> cityAdapter;
     ArrayList<City> dataList;
     Button addButton;
-
+    Button deleteButton;
     EditText cityInput;
 
     @Override
@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         //if add button is pressed, add text in the input thingy
 
         addButton = (Button) findViewById(R.id.addButtonView);
+        deleteButton = (Button) findViewById(R.id.deleteButtonView);
         cityInput = (EditText) findViewById(R.id.userInput);
 
         ButtonToggler addButtonToggler = new ButtonToggler();
@@ -78,6 +79,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ButtonToggler deleteButtonToggler = new ButtonToggler();
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (!deleteButtonToggler.isActivated()){
+                    deleteButton.setText(getString(R.string.deleteButtonConfirm));
+                }
+
+                deleteButtonToggler.switchState();
+
+            }
+        });
+
+        cityList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (deleteButtonToggler.isActivated()){
+                    City selectedCity = (City) parent.getItemAtPosition(position);
+                    cityAdapter.remove(selectedCity);
+                    deleteButtonToggler.switchState();
+                    deleteButton.setText(getString(R.string.deleteButtonDelete));
+                }
+            }
+        });
 
     }
 }

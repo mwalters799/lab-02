@@ -2,7 +2,7 @@
     <string name="app_name">ListyCity</string>
     <string name="addButton">PRESS TO ADD</string>
     <string name="confirmMessage">PRESS TO CONFIRM</string>
-    <string name="deleteButtonDelete">DELETE</string>
-    <string name="deleteButtonConfirm">CONFIRM</string>
+    <string name="deleteButtonDelete">PRESS TO DELETE</string>
+    <string name="deleteButtonConfirm">PRESS CITY TO DELETE</string>
     <string name="userInputDefaultText">Enter your city name here...</string>
 </resources>
