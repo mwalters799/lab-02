@@ -1,7 +1,9 @@
 package com.example.listycity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     ListView cityList;
     ArrayAdapter<City> cityAdapter;
     ArrayList<City> dataList;
+    Button addButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,22 @@ public class MainActivity extends AppCompatActivity {
 
         cityAdapter = new ArrayAdapter<>(this, R.layout.content, dataList);
         cityList.setAdapter(cityAdapter);
+
+        //if add button is pressed, add text in the input thingy
+
+        addButton = (Button) findViewById(R.id.addButtonView);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addButton.setText("pressed");
+
+                //fetch text from user input
+
+                //create new city
+
+                //add to cityList
+            }
+        });
 
     }
 }
